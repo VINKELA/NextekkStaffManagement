@@ -32,9 +32,20 @@ namespace NextekkStaffManager
                     var config = host.Services.GetRequiredService<IConfiguration>();
                     // Set password with the Secret Manager tool.
 
-                    var testUserPw = config["SeedUserPW"];
-                    var db = new aspnetnextekkstaffmanager11A04C4EF18F4B39BEC3D02923AE7589Context();
+                   // var testUserPw = config["SeedUserPW"];
+                    //var db = new aspnetnextekkstaffmanager11A04C4EF18F4B39BEC3D02923AE7589Context();
                     //SeedData.Initialize(services, testUserPw).Wait();
+                    var testUserPw = config["SeedUserPW"];
+                    using (var db = new aspnetnextekkstaffmanager11A04C4EF18F4B39BEC3D02923AE7589Context())
+                    {
+                        if(!db.AspNetUsers.Any())
+                        {
+                            // The table is empty
+                            SeedData.Initialize(services, testUserPw).Wait();
+
+                        }
+                    }
+
 
                 }
                 catch (Exception ex)

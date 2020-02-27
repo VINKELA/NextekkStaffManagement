@@ -135,7 +135,7 @@ namespace NextekkStaffManager.Areas.Identity.Pages.Account
                         var manyChildren = int.Parse(Input.NoOfChildren);
                         await _userManager.AddToRoleAsync(Newuser, Constants.Staff);
                         var db = new aspnetnextekkstaffmanager11A04C4EF18F4B39BEC3D02923AE7589Context();
-                        var staff = new Staffs{AspNetUsersId = user.Id,Firstname = Input.Firstname.ToUpper(), Lastname = Input.Lastname.ToUpper(), Gender = Input.Gender, MaritalStatus = Input.MaritalStatus, NoOfChildren = manyChildren, Dob = Input.Dob };
+                        var staff = new Staffs{AspNetUsersId = user.Id,Firstname = Input.Firstname.ToUpper(), Lastname = Input.Lastname.ToUpper(), Gender = Input.Gender, MaritalStatus = Input.MaritalStatus, NoOfChildren = manyChildren, Dob = Input.Dob, Active="UnActive" };
                         db.Add(staff);
                         db.SaveChanges();
 
