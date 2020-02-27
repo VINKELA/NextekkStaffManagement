@@ -169,9 +169,16 @@ namespace NextekkStaffManager.Controllers
             Staffs staffDetails = db.Staffs.Where(b => b.Id ==  staff.Id).First();
             if(staffDetails != null)
             {
-                if(!string.IsNullOrEmpty(staff.Active) && staffDetails.Active != staff.Active)
+                if(staffDetails.Active != staff.Active)
                 {
-                    staffDetails.Active = staff.Active;
+                    if(!string.IsNullOrEmpty(staff.Active))
+                    {
+                        staffDetails.Active = staff.Active;
+                    }
+                    else
+                    {
+                        staffDetails.Active ="UnActive";
+                    }
                 }
                 if(staffDetails.DayEmployed != staff.DayEmployed)
                 {

@@ -31,11 +31,16 @@
                 <tr>
                     <td>Active</td>
                     <td>
-                        <select name="Active" class="form-control">
-                            <option selected="" value="">@Model.Active</option>
-                            <option value = "Active">Active</option>
-                            <option value = "UnActive">Not Active</option>
-                        </select>
+                        @{
+                            if(Model.Active == "Active")
+                            {
+                                <input name="Active" type="checkbox" class="form-control" value="Active" checked>
+                            }
+                            else
+                            {
+                                <input name="Active" type="checkbox" class="form-control" value="Active">
+                            }
+                        }
                     </td>
                 </tr>
                 <tr>
