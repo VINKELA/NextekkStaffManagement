@@ -49,7 +49,23 @@
                     <td>Institution</td><td>@Model.School</td>
                 </tr>
                 <tr>
-                    <td>Time of Service</td><td>@Model.TimeOfService</td>
+                    <td>Time of Service</td><td>
+                         @{
+                             if(!string.IsNullOrEmpty(Model.DayEmployed))
+                             {
+                                 <span>@Model.DayEmployed</span>
+                             }
+
+                             if(!string.IsNullOrEmpty(Model.TimeOfService))
+                             {
+                                 <span>to @Model.TimeOfService</span>
+                             }
+                             else if(!string.IsNullOrEmpty(Model.DayEmployed))
+                             {
+                                 <span>to Current</span>
+                             }
+                         }
+                        </td>
                 </tr>
                 <tr>
                     <td>Position</td><td>@Model.Position</td>
