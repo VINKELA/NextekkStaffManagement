@@ -35,7 +35,16 @@
                 <tr><th colspan ="2"> OTHER INFORMATION</th></tr>
                 <tr>
                     <td>Status</td>
-                    <td>@Model.Active</td>
+                    @{
+                        if(@Model.Active == "Active")
+                        {
+                            <td class="green">@Model.Active</td>
+                        }
+                        else
+                        {
+                            <td class="red">Not Active</td>                           
+                        }
+                    }
                 </tr>
                 <tr>
                     <td>Day of Employment</td><td>@Model.DayEmployed</td>

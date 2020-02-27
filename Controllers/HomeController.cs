@@ -21,6 +21,19 @@ namespace NextekkStaffManager.Controllers
             _logger = logger;
         }
 
+        // checks if a logged in user has been set as active by the admin
+        public bool IsActive(int user_id)
+        {
+            var db = new aspnetnextekkstaffmanager11A04C4EF18F4B39BEC3D02923AE7589Context();
+            var user = db.Staffs.Where(c => c.Id ==user_id).ToList();
+            if (user[0].Active == "Active")
+            {
+                return true;
+            }
+            return false;
+        }
+
+
         [Authorize]
         public IActionResult Index(Staffs userData)
         {
@@ -202,9 +215,13 @@ namespace NextekkStaffManager.Controllers
 
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Staff")]
         public IActionResult StaffEdit(Staffs staff)
         {
+            if(!IsActive(staff.Id))
+            {
+                return View("UnActive");
+            }
             var db = new aspnetnextekkstaffmanager11A04C4EF18F4B39BEC3D02923AE7589Context();
             Staffs staffDetails = db.Staffs.Where(b => b.Id ==  staff.Id).First();
 
@@ -212,9 +229,14 @@ namespace NextekkStaffManager.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Staff")]
         public IActionResult Edited(Staffs staff)
         {
+            if(!IsActive(staff.Id))
+            {
+                return View("UnActive");
+            }
+
             var db = new aspnetnextekkstaffmanager11A04C4EF18F4B39BEC3D02923AE7589Context();
             Staffs staffDetails = db.Staffs.Where(b => b.Id ==  staff.Id).First();
             if(staffDetails != null)
@@ -248,10 +270,6 @@ namespace NextekkStaffManager.Controllers
 
 
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
