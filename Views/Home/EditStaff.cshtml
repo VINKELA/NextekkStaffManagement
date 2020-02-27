@@ -1,0 +1,105 @@
+@model NextekkStaffManager.Models.StaffPageModel
+@{
+    ViewData["Title"] = "Admin";
+}
+
+
+        <table class="table table-striped">
+                <tr><th colspan ="2"> BASIC INFORMATION</th></tr>
+                <tr>
+                    <td>Name</td><td>@Model.Firstname @Model.Lastname</td>
+                </tr>
+                <tr>
+                    <td>Gender</td><td>@Model.Gender</td>
+                </tr>
+
+                <tr>
+                    <td>Date of Birth</td><td>@Model.Dob</td>
+                </tr>
+
+                <tr>
+                    <td>Marital status</td><td>@Model.MaritalStatus</td>
+                </tr>
+                <tr>
+                    <td>Number of children</td><td>@Model.NoOfChildren</td>
+                </tr>
+
+        </table>
+        <form asp-controller="Home" asp-action="Update">
+        <table class="table table-striped">
+                <tr><th colspan ="2"> OTHER INFORMATION</th></tr>
+                <tr>
+                    <td>Active</td>
+                    <td>
+                        <select name="Active" class="form-control">
+                            <option selected="" value="">@Model.Active</option>
+                            <option value = "Active">Active</option>
+                            <option value = "UnActive">Not Active</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Day of Employment</td><td><input name="DayEmployed" type="date" value=@Model.DayEmployed class="form-control"></td>
+                </tr>
+
+                <tr>
+                    <td>Highest Qualification</td><td>
+                        <select name="HighestQualification" type="text" value=@Model.HighestQualification class="form-control">
+                            <option value=@Model.HighestQualification selected="">@Model.HighestQualification</option>
+                            <option>High School</option>
+                            <option>Diploma</option>
+                            <option>Degree</option>
+                            <option>Masters</option>
+                            <option>PHD</option>
+                            <option>Proessor</option>
+                            <option>High School</option>
+                            <option>Others</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Institution</td><td><input name="School" type="text" value=@Model.School class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>Time of Service</td><td><input name="TimeOfService" type="time" value=@Model.TimeOfService class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>Position</td><td>
+                        <select name="Position" type="text" value=@Model.Position class="form-control">
+                            <option value=@Model.Position selected="">@Model.Position</option>
+                            <option value="Intern Developer">Intern Developer</option>
+                            <option value="Junior Developer">Junior Developer</option>
+                            <option value="Senior Developer">Senior Developer</option>
+                        </select>
+                        </td>
+                </tr>
+                <tr>
+                    <td>Promoted Last on</td><td><input name="LastPromoted" type="date" value=@Model.LastPromoted class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>Annual Salary</td><td><input type="text" value=@Model.AnnualSalary name ="AnnualSalary" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>choose Supervisor</td>
+                    <td>
+                        <select type="text" name="Supervisor" id="multi"  class="form-control"/>
+                                <option value="" selected="">Change Superior</option>
+                                @foreach(var p in Model.Subordinates)
+                                {
+                                    if(p.Id != Model.Id)
+                                    {
+                                        <option value=@p.Id>@p.Firstname @p.Lastname</option>
+                                    }
+                                }
+                        </select>
+                    </td>
+                </tr>
+
+        </table>
+
+            <div>  
+                <input name="Id" value=@Model.Id type="hidden"/>
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+            </form>

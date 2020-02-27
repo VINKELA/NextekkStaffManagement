@@ -1,0 +1,62 @@
+@model List<NextekkStaffManager.Models.Staffs>
+
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<div>
+<form asp-controller="Home" asp-action="Index">
+           <select type="text" name="Firstname" id="multi" placeholder="Firstname Lastname" class="form-control"/>
+                <option value="" selected="">Select Staff</option>
+                @foreach(var p in Model)
+                {
+                    <option value=@p.Firstname>@p.Firstname @p.Lastname</option>
+                }
+            </select>
+<div class="row">
+        <div class="col searchButton"><button  type="submit" class="btn btn-primary searchButton">Submit</button></div>
+</form>
+@{
+    if(ViewBag.search == "true")
+    {
+        <form asp-controller="Home" asp-action="Index">
+            <div class="col searchButton"><button  type="submit" class="btn btn-primary searchButton">Back</button> </div>
+        </form>
+       
+    }
+}
+</div>
+</div>
+@foreach(var p in Model)
+{
+
+    <div class="formarea class_form stafflist row">
+        <div class="col">
+            <img src="\img\avatar.png">
+        </div>
+            <div class="col">
+            <p class= "class_details">First Name: @p.Firstname</p>
+            <p class="class_details">Last Name @p.Lastname</p>
+            <p class="class_details">Gender: @p.Gender</p>
+            <p class="class_details">Position: @p.Position</p>
+            @{
+                if(@p.Active == "UnActive")
+                {
+                    <p class = "class_details">Status: <span class="red">Not Active</span></p>
+                }
+                else
+                {
+                    <p class = "class_details">Status: <span class="green"><b>@p.Active</b></span> </p>            
+                }
+            }
+            <form asp-controller="Home" asp-action="staffPage">
+                <input name="Id" value=@p.Id type="hidden"/>
+                <button type="submit" class="btn btn-primary" id="class_view">view</button>
+            </form>
+            </div>
+
+            </div>
+}
+
+
+    

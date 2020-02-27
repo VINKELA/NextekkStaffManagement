@@ -1,0 +1,96 @@
+@model NextekkStaffManager.Models.StaffPageModel
+@{
+    ViewData["Title"] = @Model.Firstname;
+}
+
+
+        <table class="table table-striped">
+                <tr>
+                    <th colspan ="2"> BASIC INFORMATION</th>
+                </tr>
+                <tr>
+                    <td rowspan="3"><img src="\img\avatar.png"></td>
+                </tr>            
+                <tr>
+                    <td>@Model.Firstname @Model.Lastname</td>
+                </tr>
+                <tr>
+                    <td>@Model.Gender</td>
+                </tr>
+
+                <tr>
+                    <td>Date of Birth</td><td>@Model.Dob</td>
+                </tr>
+
+                <tr>
+                    <td>Marital status</td><td>@Model.MaritalStatus</td>
+                </tr>
+                <tr>
+                    <td>Number of children</td><td>@Model.NoOfChildren</td>
+                </tr>
+
+        </table>
+
+        <table class="table table-striped">
+                <tr><th colspan ="2"> OTHER INFORMATION</th></tr>
+                <tr>
+                    <td>Status</td>
+                    <td>@Model.Active</td>
+                </tr>
+                <tr>
+                    <td>Day of Employment</td><td>@Model.DayEmployed</td>
+                </tr>
+
+                <tr>
+                    <td>Highest Qualification</td><td>@Model.HighestQualification</td>
+                </tr>
+
+                <tr>
+                    <td>Institution</td><td>@Model.School</td>
+                </tr>
+                <tr>
+                    <td>Time of Service</td><td>@Model.TimeOfService</td>
+                </tr>
+                <tr>
+                    <td>Position</td><td>@Model.Position</td>
+                </tr>
+                <tr>
+                    <td>Promoted Last on</td><td>@Model.LastPromoted</td>
+                </tr>
+                <tr>
+                    <td>Annual Salary</td><td>@Model.AnnualSalary</td>
+                </tr>
+                <tr>
+                    <td>Subordinates</td>
+                        <td>
+                   
+                            @{
+                                if(Model.Subordinates.Count() ==  0)
+                                {
+                                    <div>No Subordinates</div>
+                                }
+                                foreach(var p in Model.Subordinates)
+                                {
+                                    <div value=@p.Firstname>@p.Firstname @p.Lastname</div>
+                                }
+
+                            }
+                        </td>
+
+                </tr>
+
+        </table>
+        <div class="row">
+                <div class="col">  
+                    <form asp-controller="Home" asp-action="editStaff">
+                        <input name="Id" value=@Model.Id type="hidden"/>
+                        <button type="submit" class="btn btn-primary">Edit</button>
+                    </form>
+                </div>
+                <div class="col">  
+                    <form asp-controller="Home" asp-action="Index">
+                        <button type="submit" class="btn btn-primary">Back</button>
+                    </form>
+                </div>
+        </div>
+

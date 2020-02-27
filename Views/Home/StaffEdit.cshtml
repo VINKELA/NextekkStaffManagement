@@ -1,0 +1,58 @@
+@model NextekkStaffManager.Models.Staffs
+@{
+    ViewData["Title"] = @Model.Firstname;
+}
+
+<form asp-controller="Home" asp-action="Edited">
+
+        <table class="table table-striped">
+                <tr>
+                    <th colspan ="2"> BASIC INFORMATION</th>
+                </tr>
+                <tr>
+                    <td rowspan="3"><img src="\img\avatar.png"></td>
+                </tr>            
+                <tr>
+                    <td>
+                        <div>Firstname <input name="Firstname" value=@Model.Firstname class="form-control" required/></div>
+                        <div>Lastname <input name="Lastname" value=@Model.Lastname class="form-control" required/></div>
+                    </td>
+                </tr>
+                <tr>
+                        <td>Gender <select name="Gender"  class="form-control">
+                            <option value="" selected="">@Model.Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                        </td>
+                </tr>
+
+                <tr>
+                    <td>Date of Birth</td><td><input name="Dob" value=@Model.Dob type="date"  class="form-control" required></td>
+                </tr>
+
+                <tr>
+                    <td>Marital status</td>                        
+                        <td> 
+                            <select name="MaritalStatus"  class="form-control">
+                            <option value="" selected="">@Model.MaritalStatus</option>
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            </select>
+                        </td>
+
+                </tr>
+                <tr>
+                    <td>Number of children</td><td><input class="form-control" type="number" min="0" value=@Model.NoOfChildren name="NoOfChildren" required></td>
+                </tr>
+
+        </table>
+        <div class="row">  
+                <input name="Id" value=@Model.Id type="hidden"/>
+                <div class="col"><button type="submit" id="staffEditButton" class="btn btn-primary">Update</button></div>
+            </form>
+            <form asp-controller="Home" asp-action="Index">
+                <input name="Id" value=@Model.Id type="hidden"/>
+                <div class="col"><button type="submit" id="staffEditButton" class="btn btn-primary">Back</button></div>
+            </form>
+        </div>
