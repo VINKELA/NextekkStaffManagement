@@ -28,7 +28,6 @@ namespace NextekkStaffManager.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Data Source =(localdb)\\MSSQLLocalDB;Initial Catalog =                        aspnet-NextekkStaffManager-5B0FED69-3655-47E2-8E5E-122E47F622D0");
             }
 

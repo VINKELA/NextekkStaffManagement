@@ -78,7 +78,7 @@
                     <td>Promoted Last on</td><td><input name="LastPromoted" type="date" value=@Model.LastPromoted class="form-control"></td>
                 </tr>
                 <tr>
-                    <td>Annual Salary</td><td><input type="text" value=@Model.AnnualSalary name ="AnnualSalary" class="form-control"></td>
+                    <td>Annual Salary</td><td><input value=@Model.AnnualSalary type="number" min="0" name ="AnnualSalary" class="form-control"></td>
                 </tr>
                 <tr>
                     <td>choose Supervisor</td>
@@ -97,9 +97,11 @@
                 </tr>
 
         </table>
+                        <input name="Id" value=@Model.Id type="hidden"/>
 
-            <div>  
-                <input name="Id" value=@Model.Id type="hidden"/>
-                <button type="submit" class="btn btn-primary">Update</button>
-            </div>
+            <div class="row">  
+               <div class="col"> <button type="submit" class="btn btn-primary">Update</button></div>
+
             </form>
+               <div class="col"> <button type="submit" class="btn btn-primary">Back</button></div>
+            </div>
