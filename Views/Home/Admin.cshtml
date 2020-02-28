@@ -27,35 +27,48 @@
 }
 </div>
 </div>
-@foreach(var p in Model)
-{
 
-    <div class="formarea class_form stafflist row">
-        <div class="col">
-            <img src="\img\avatar.png">
-        </div>
-            <div class="col">
-            <p class= "class_details">First Name: @p.Firstname</p>
-            <p class="class_details">Last Name @p.Lastname</p>
-            <p class="class_details">Gender: @p.Gender</p>
-            @{
-                if(@p.Active == "UnActive")
-                {
-                    <p class = "class_details">Status: <span class="red">Not Active</span></p>
-                }
-                else
-                {
-                    <p class = "class_details">Status: <span class="green">@p.Active</span> </p>            
-                }
-            }
-            <form asp-controller="Home" asp-action="staffPage">
-                <input name="Id" value=@p.Id type="hidden"/>
-                <button type="submit" class="btn btn-primary" id="class_view">view</button>
-            </form>
-            </div>
+@{
+    if(Model.Count() == 0)
+    {
+        <div class="blue">App is ready! Employees can now sign up</div>
 
-            </div>
+    }
+    else
+    {
+        foreach(var p in Model)
+        {
+
+            <div class="formarea class_form stafflist row">
+                <div class="col">
+                    <img src="\img\avatar.png">
+                </div>
+                    <div class="col">
+                    <p class= "class_details">First Name: @p.Firstname</p>
+                    <p class="class_details">Last Name @p.Lastname</p>
+                    <p class="class_details">Gender: @p.Gender</p>
+                    @{
+                        if(@p.Active == "UnActive")
+                        {
+                            <p class = "class_details">Status: <span class="red">Not Active</span></p>
+                        }
+                        else
+                        {
+                            <p class = "class_details">Status: <span class="green">@p.Active</span> </p>            
+                        }
+                    }
+                    <form asp-controller="Home" asp-action="staffPage">
+                        <input name="Id" value=@p.Id type="hidden"/>
+                        <button type="submit" class="btn btn-primary" id="class_view">view</button>
+                    </form>
+                    </div>
+
+                    </div>
+        }
+                }
+
 }
+
 
 
     

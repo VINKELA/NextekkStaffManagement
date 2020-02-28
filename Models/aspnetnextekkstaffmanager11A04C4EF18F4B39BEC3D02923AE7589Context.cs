@@ -28,7 +28,7 @@ namespace NextekkStaffManager.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source =(localdb)\\MSSQLLocalDB;Initial Catalog =                        aspnet-NextekkStaffManager-5B0FED69-3655-47E2-8E5E-122E47F622D0");
+                optionsBuilder.UseSqlServer("Data Source =(localdb)\\MSSQLLocalDB;Initial Catalog=aspnet-Nextekk-EC288D8F-E274-43D2-83D0-F10A1E0F3682");
             }
 
         }

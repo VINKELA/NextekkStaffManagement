@@ -24,8 +24,8 @@ namespace NextekkStaffManager.Data
                 // dotnet user-secrets set SeedUserPW <pw>
                 // The admin user can do anything
                 
-                var adminID = await EnsureUser(serviceProvider, testUserPw, "admin@nextekk.com");
-                await EnsureRole(serviceProvider, adminID);
+                //var adminID = await EnsureUser(serviceProvider, testUserPw, "admin@nextekk.com");
+                await EnsureRole(serviceProvider);
                 // allowed user can create and edit contacts that they create
                 //var managerID = await EnsureUser(serviceProvider, testUserPw, "manager@contoso.com");
                 //await EnsureRole(serviceProvider, managerID, UserRole.StaffRole);
@@ -57,8 +57,7 @@ namespace NextekkStaffManager.Data
             return user.Id;
         }
 
-        private static async Task<IdentityResult> EnsureRole(IServiceProvider serviceProvider,
-                                                                    string uid)
+        private static async Task<IdentityResult> EnsureRole(IServiceProvider serviceProvider)
         {
             IdentityResult IR = null;
             var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
@@ -78,16 +77,16 @@ namespace NextekkStaffManager.Data
                 var IVR = await roleManager.CreateAsync(new IdentityRole(Constants.Staff));
             }
 
-            var userManager = serviceProvider.GetService<UserManager<IdentityUser>>();
+            //var userManager = serviceProvider.GetService<UserManager<IdentityUser>>();
 
-            var user = await userManager.FindByIdAsync(uid);
+            //var user = await userManager.FindByIdAsync(uid);
 
-            if(user == null)
-            {
-                throw new Exception("The testUserPw password was probably not strong enough!");
-            }
+            //if(user == null)
+            //{
+                //throw new Exception("The testUserPw password was probably not strong enough!");
+            //}
             
-            IR = await userManager.AddToRoleAsync(user, Constants.Admin);
+            //IR = await userManager.AddToRoleAsync(user, Constants.Admin);
 
             return IR;
         }

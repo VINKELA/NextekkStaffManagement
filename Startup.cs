@@ -67,7 +67,22 @@ namespace NextekkStaffManager
                 options.Cookie.HttpOnly = true;
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
 
-                options.LoginPath = "/Identity/Account/Login";
+                using (var db = new aspnetnextekkstaffmanager11A04C4EF18F4B39BEC3D02923AE7589Context())
+                {
+                    if(!db.AspNetUsers.Any())
+                    {
+                        // The table is empty
+                        options.LoginPath = "/Identity/Account/AdminSetup";
+
+
+                    }
+                    else
+                    {
+                        options.LoginPath = "/Identity/Account/Login";
+
+                    }
+                }
+
                 options.AccessDeniedPath = "/Identity/Account/AccessDenied";
                 options.SlidingExpiration = true;
             });

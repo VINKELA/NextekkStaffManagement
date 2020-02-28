@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\owner\\Desktop\\Nextekk\\NextekkStaffManager.csproj": {}
+    "C:\\Users\\owner\\Desktop\\NextekkStaffs\\nextekk\\NextekkStaffManager.csproj": {}
   },
   "projects": {
-    "C:\\Users\\owner\\Desktop\\Nextekk\\NextekkStaffManager.csproj": {
+    "C:\\Users\\owner\\Desktop\\NextekkStaffs\\nextekk\\NextekkStaffManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\owner\\Desktop\\Nextekk\\NextekkStaffManager.csproj",
+        "projectUniqueName": "C:\\Users\\owner\\Desktop\\NextekkStaffs\\nextekk\\NextekkStaffManager.csproj",
         "projectName": "NextekkStaffManager",
-        "projectPath": "C:\\Users\\owner\\Desktop\\Nextekk\\NextekkStaffManager.csproj",
+        "projectPath": "C:\\Users\\owner\\Desktop\\NextekkStaffs\\nextekk\\NextekkStaffManager.csproj",
         "packagesPath": "C:\\Users\\owner\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\owner\\Desktop\\Nextekk\\obj\\",
+        "outputPath": "C:\\Users\\owner\\Desktop\\NextekkStaffs\\nextekk\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\owner\\AppData\\Roaming\\NuGet\\NuGet.Config"

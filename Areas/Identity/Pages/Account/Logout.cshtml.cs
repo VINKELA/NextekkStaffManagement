@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using NextekkStaffManager.Models;
 
 namespace NextekkStaffManager.Areas.Identity.Pages.Account
 {
@@ -28,15 +29,25 @@ namespace NextekkStaffManager.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPost(string returnUrl = null)
         {
+
             await _signInManager.SignOutAsync();
             _logger.LogInformation("User logged out.");
+            using (var db = new aspnetnextekkstaffmanager11A04C4EF18F4B39BEC3D02923AE7589Context())
+            {
+                if(!db.Staffs.Any())
+                {
+                    return RedirectToPage("./Login");
+
+                }
+            }
+
             if (returnUrl != null)
             {
                 return LocalRedirect(returnUrl);
             }
             else
             {
-                return RedirectToPage();
+                return RedirectToPage("./Login");
             }
         }
     }
