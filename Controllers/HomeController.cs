@@ -216,7 +216,9 @@ namespace NextekkStaffManager.Controllers
             }
             db.Update(staffDetails);
             db.SaveChanges();
-            var Details = db.Staffs.ToList();
+            var Details = db.Staffs
+            .OrderBy(c => c.Firstname)
+            .ToList();
             return View("Admin", Details);
         }
 
