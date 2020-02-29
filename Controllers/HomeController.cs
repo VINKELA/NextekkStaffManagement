@@ -34,6 +34,7 @@ namespace NextekkStaffManager.Controllers
         }
 
 
+
         [Authorize]
         public IActionResult Index(Staffs userData)
         {
@@ -92,7 +93,7 @@ namespace NextekkStaffManager.Controllers
                         var Subordinates = db.Staffs.Where(b => b.Supervisor ==  staffDetails.Id).ToList();
 
                         staffPageModel.Subordinates = Subordinates;
-
+                    
                         return View("StaffPortfolio", staffPageModel);
                     }
                     else
@@ -188,9 +189,9 @@ namespace NextekkStaffManager.Controllers
                 {
                     staffDetails.HighestQualification = staff.HighestQualification;
                 }
-                if(staffDetails.School != staff.School)
+                if(staffDetails.School != staff.School && !(string.IsNullOrWhiteSpace(staff.School)))
                 {
-                    staffDetails.School = staff.School;
+                    staffDetails.School = staff.School.ToUpper();
                 }
                 if(staffDetails.TimeOfService != staff.TimeOfService)
                 {
@@ -219,6 +220,7 @@ namespace NextekkStaffManager.Controllers
             var Details = db.Staffs
             .OrderBy(c => c.Firstname)
             .ToList();
+            ViewData["Info"] = "Update successful!";
             return View("Admin", Details);
         }
 
@@ -270,10 +272,16 @@ namespace NextekkStaffManager.Controllers
                 {
                     staffDetails.MaritalStatus = staff.MaritalStatus;
                 }
+                if (staffDetails.NoOfChildren != staff.NoOfChildren)
+                {
+                    staffDetails.NoOfChildren = staff.NoOfChildren;
+                }
+
             }
             db.Update(staffDetails);
             db.SaveChanges();
-            var staffRecord = db.Staffs.Where(b => b.Id ==  staff.Id).First();
+            var staffRecord = db.Staffs.Where(b => b.Id ==  staff.Id).First(); 
+            ViewBag.Info = "update successful!";
             return Redirect("Index");
         }
 
