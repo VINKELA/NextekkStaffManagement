@@ -13,6 +13,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NextekkStaffManager.Models;
+using Microsoft.AspNetCore.Identity.UI.Services;
+
 
 namespace NextekkStaffManager
 {
@@ -40,6 +42,13 @@ namespace NextekkStaffManager
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+            // requires
+            // using Microsoft.AspNetCore.Identity.UI.Services;
+            // using WebPWrecover.Services;
+            services.AddTransient<IEmailSender, EmailSender>();
+            services.Configure<AuthMesssage>(Configuration);
+
+
             services.Configure<IdentityOptions>(options =>
             {
                 // Password settings.
@@ -59,6 +68,7 @@ namespace NextekkStaffManager
                 options.User.AllowedUserNameCharacters =
                 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
                 options.User.RequireUniqueEmail = true;
+                //options.SignIn.RequireConfirmedAccount = true;
             });
 
             services.ConfigureApplicationCookie(options =>

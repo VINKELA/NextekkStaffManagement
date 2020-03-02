@@ -663,3 +663,4 @@ C:\Users\owner\Desktop\NextekkStaffs\nextekk\obj\Debug\netcoreapp3.1\NextekkStaf
 C:\Users\owner\Desktop\NextekkStaffs\nextekk\obj\Debug\netcoreapp3.1\NextekkStaffManager.csproj.CopyComplete
 C:\Users\owner\Desktop\NextekkStaffs\nextekk\obj\Debug\netcoreapp3.1\NextekkStaffManager.dll
 C:\Users\owner\Desktop\NextekkStaffs\nextekk\obj\Debug\netcoreapp3.1\NextekkStaffManager.pdb
+C:\Users\owner\Desktop\NextekkStaffs\Nextekk\bin\Debug\netcoreapp3.1\SendGrid.dll

@@ -254,7 +254,7 @@ namespace NextekkStaffManager.Controllers
             {
                 if(!string.IsNullOrEmpty(staff.Firstname) && staffDetails.Firstname != staff.Firstname)
                 {
-                    staffDetails.DayEmployed = staff.Firstname.ToUpper();
+                    staffDetails.Firstname = staff.Firstname.ToUpper();
                 }
                 if(!string.IsNullOrEmpty(staff.Lastname) && staffDetails.Lastname != staff.Lastname)
                 {
